@@ -1,6 +1,16 @@
 from django.shortcuts import render, redirect
+from django.http import HttpResponse
 from django.contrib.auth import login
 from .forms import RegisterForm
+
+
+def index(request):
+    return render(request, 'accounts/home.html')
+
+
+def login_view(request):
+    return render(request, 'accounts/login.html')
+
 
 def register(request):
     if request.method == 'POST':
