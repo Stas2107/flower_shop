@@ -1,16 +1,29 @@
-<!-- templates/accounts/register.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>register</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация</title>
+    <!-- Подключение Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-    <h2>register</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Sign Up</button>
-    </form>
+    <div class="container mt-5">
+        <h2 class="text-center">Регистрация</h2>
+        <form method="post" class="mt-4">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.as_p|safe }} <!-- Используйте safe фильтр, чтобы избежать HTML escaping -->
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+        </form>
+        <p class="text-center mt-3">
+            У вас уже есть аккаунт? <a href="{% url 'login' %}">Войти</a>
+        </p>
+    </div>
+
+    <!-- Подключение jQuery и Bootstrap JS (внизу, перед закрывающим тегом body) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
