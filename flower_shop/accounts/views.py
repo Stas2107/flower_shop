@@ -8,6 +8,10 @@ from django.contrib.auth import login as auth_login
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
 from .models import accounts
+from django.core.mail import send_mail
+from django.conf import settings
+from django.views import View
+from django import forms
 
 
 def index(request):
@@ -48,3 +52,39 @@ def login(request):
 def catalog(request):
     flowers = accounts.objects.all()  # Получаем все цветы из базы данных
     return render(request, 'accounts/catalog.html', {'flowers': flowers})
+
+
+
+
+class ContactForm(forms.Form):
+    name = forms.CharField(max_length=100, label='Ваше имя')
+    email = forms.EmailField(label='Ваш Email')
+    message = forms.CharField(widget=forms.Textarea, label='Сообщение')
+
+
+class ContactView(View):
+    form_class = ContactForm
+    template_name = 'accounts/contact.html'
+
+    def get(self, request):
+        form = self.form_class()
+        return render(request, self.template_name, {'form': form})
+
+    def post(self, request):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            email = form.cleaned_data['email']
+            message = form.cleaned_data['message']
+
+            # Отправка сообщения на email
+            send_mail(
+                f'Сообщение от {name}',
+                message,
+                settings.DEFAULT_FROM_EMAIL,
+                [settings.ADMIN_EMAIL],
+                fail_silently=False,
+            )
+
+            return render(request, 'accounts/contact.html', {'form': form, 'success': True})
+        return render(request, self.template_name, {'form': form})
