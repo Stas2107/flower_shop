@@ -5,11 +5,11 @@ from .forms import RegisterForm
 
 
 def index(request):
-    return render(request, 'accounts/home.html')
+    return HttpResponse('Привет, это главная страница')
 
 
 def login_view(request):
-    return render(request, 'accounts/login.html')
+    return HttpResponse('Привет, это страница логина')
 
 
 def register(request):
