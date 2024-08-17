@@ -1,29 +1,38 @@
+<!-- accounts/templates/accounts/register.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Регистрация</title>
-    <!-- Подключение Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
     <div class="container mt-5">
         <h2 class="text-center">Регистрация</h2>
-        <form method="post" class="mt-4">
+        <form method="post">
             {% csrf_token %}
             <div class="form-group">
-                {{ form.as_p|safe }} <!-- Используйте safe фильтр, чтобы избежать HTML escaping -->
+                <label for="username">Имя пользователя</label>
+                {{ form.username }}
             </div>
-            <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+            <div class="form-group">
+                <label for="email">Электронная почта</label>
+                {{ form.email }}
+            </div>
+            <div class="form-group">
+                <label for="password">Пароль</label>
+                {{ form.password }}
+            </div>
+            <div class="form-group">
+                <label for="password_confirm">Подтвердите пароль</label>
+                {{ form.password_confirm }}
+            </div>
+            <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
         </form>
-        <p class="text-center mt-3">
-            У вас уже есть аккаунт? <a href="{% url 'login' %}">Войти</a>
-        </p>
+        <div class="mt-3">
+            <a href="{% url 'login' %}">Уже есть аккаунт? Войти</a>
+        </div>
     </div>
-
-    <!-- Подключение jQuery и Bootstrap JS (внизу, перед закрывающим тегом body) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -16,8 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from accounts.views import index
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('accounts.urls')),  # Подключаем URL из приложения accounts
+    path('accounts/', include('accounts.urls')),
+    path('', index, name='index'),  # Главная страница
 ]
