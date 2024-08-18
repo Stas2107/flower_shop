@@ -37,10 +37,10 @@ def order(request):
             order.user = request.user
             order.save()
             form.save_m2m()  # Сохраняем связь с продуктами
-            send_order_notification(order)  # Отправляем уведомление в Telegram
+            send_order_notification(order)  # Отправляем уведомление в Teleg
             return redirect('home')  # Перенаправляем на главную страницу после оформления заказа
         else:
-            logging.warning("Форма заказа не прошла валидацию.")
+            logging.warning("Форма заказа не прошла валидацию: %s", form.errors)
     else:
         form = OrderForm()
     return render(request, 'shop/order.html', {'form': form})
