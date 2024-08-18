@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 from .forms import UserRegistrationForm, OrderForm
 from .models import Product
+
 
 def home(request):
     products = Product.objects.all()
@@ -18,6 +20,7 @@ def register(request):
         form = UserRegistrationForm()
     return render(request, 'shop/register.html', {'form': form})
 
+@login_required  # Добавляем декоратор для ограничения доступа
 def order(request):
     if request.method == 'POST':
         form = OrderForm(request.POST)

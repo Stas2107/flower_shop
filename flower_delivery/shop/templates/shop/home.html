@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <title>Flower Delivery</title>
+    <style>
+        .card-img-top {
+            height: 200px; /* Задайте фиксированную высоту */
+            object-fit: cover; /* Обрезать изображение, сохраняя его пропорции */
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -33,7 +39,7 @@
             {% for product in products %}
                 <div class="col-md-4">
                     <div class="card mb-4">
-                        <img src="https://via.placeholder.com/300" class="card-img-top" alt="{{ product.name }}">
+                        <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
                         <div class="card-body">
                             <h5 class="card-title">{{ product.name }}</h5>
                             <p class="card-text">Цена: {{ product.price }}₽</p>
