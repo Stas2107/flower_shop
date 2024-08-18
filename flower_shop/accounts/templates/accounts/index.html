@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Магазин Цветов</title>
-    <link rel="stylesheet" href="htps://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
+
 <body>
     <header class="bg-dark text-white text-center p-3">
         <h1>Добро пожаловать в магазин цветов</h1>
@@ -20,16 +22,13 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Главная</a>
+                    <a class="nav-link" href="{% url 'index' %}">Главная</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Каталог</a>
+                    <a class="nav-link" href="{% url 'catalog' %}">Каталог</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">О нас</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Контакты</a>
+                    <a class="nav-link" href="{% url 'contact' %}">Контакты</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'register' %}">Регистрация</a>
@@ -46,7 +45,7 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="card">
-                    <img src="htps://via.placeholder.com/150" class="card-img-top" alt="Букет 1">
+                    <img src="https://via.placeholder.com/150" class="card-img-top" alt="Букет 1">
                     <div class="card-body">
                         <h5 class="card-title">Букет Роз</h5>
                         <p class="card-text">Нежные красные розы.</p>
@@ -56,7 +55,7 @@
             </div>
             <div class="col-md-4">
                 <div class="card">
-                    <img src="htps://via.placeholder.com/150" class="card-img-top" alt="Букет 2">
+                    <img src="https://via.placeholder.com/150" class="card-img-top" alt="Букет 2">
                     <div class="card-body">
                         <h5 class="card-title">Букет Лилии</h5>
                         <p class="card-text">Элегантные белые лилии.</p>
@@ -66,7 +65,7 @@
             </div>
             <div class="col-md-4">
                 <div class="card">
-                    <img src="htps://via.placeholder.com/150" class="card-img-top" alt="Букет 3">
+                    <img src="https://via.placeholder.com/150" class="card-img-top" alt="Букет 3">
                     <div class="card-body">
                         <h5 class="card-title">Букет Тюльпанов</h5>
                         <p class="card-text">Яркие тюльпаны на любой праздник.</p>
@@ -87,9 +86,9 @@
     </div>
 
     <footer class="bg-dark text-white text-center p-3 mt-5">
-        <p>© 2024 Магазин Цветов. Все права защищены.</p>
+        <p>&copy; 2024 Магазин Цветов. Все права защищены.</p>
     </footer>
-<script src="htps://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="htps://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
