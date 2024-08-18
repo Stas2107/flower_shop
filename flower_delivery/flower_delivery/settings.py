@@ -129,3 +129,4 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 LOGIN_URL = '/accounts/login/'  # URL для страницы входа
+LOGIN_REDIRECT_URL = '/'  # URL для перенаправления после входа
