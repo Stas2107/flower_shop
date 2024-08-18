@@ -1,17 +1,18 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from django.contrib.auth.models import User
-from .forms import RegistrationForm, CustomLoginForm
+from .forms import RegistrationForm, CustomLoginForm, OrderForm
 from django.contrib import messages
 
 from django.contrib.auth import login as auth_login
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
-from .models import accounts
+from .models import accounts, Product
 from django.core.mail import send_mail
 from django.conf import settings
 from django.views import View
 from django import forms
+from .models import Product, Order
 
 
 def index(request):
@@ -88,3 +89,26 @@ class ContactView(View):
 
             return render(request, 'accounts/contact.html', {'form': form, 'success': True})
         return render(request, self.template_name, {'form': form})
+
+
+def index_view(request):
+    products = Product.objects.all()
+    return render(request, 'index.html', {'products': products})
+
+
+# механика заказов
+def order_view(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+
+    if request.method == 'POST':
+        order = Order(user=request.user)
+        order.save()
+        order.products.add(product)
+        return redirect('order_success')  # Перенаправление на страницу успеха
+
+    return render(request, 'order.html', {'product': product})
+
+
+def order_success_view(request):
+    return render(request, 'order_success.html')
+

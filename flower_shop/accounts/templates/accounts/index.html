@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Магазин Цветов</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
-
 <body>
     <header class="bg-dark text-white text-center p-3">
         <h1>Добро пожаловать в магазин цветов</h1>
@@ -43,36 +41,18 @@
     <div class="container mt-5">
         <h2 class="text-center">Популярные букеты</h2>
         <div class="row">
+            {% for product in products %}
             <div class="col-md-4">
                 <div class="card">
-                    <img src="https://via.placeholder.com/150" class="card-img-top" alt="Букет 1">
+                    <img src="{{ product.image_url }}" class="card-img-top" alt="{{ product.name }}">
                     <div class="card-body">
-                        <h5 class="card-title">Букет Роз</h5>
-                        <p class="card-text">Нежные красные розы.</p>
-                        <a href="#" class="btn btn-primary">Купить</a>
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        <p class="card-text">{{ product.description }}</p>
+                        <a href="{% url 'order' product.id %}" class="btn btn-primary">Купить</a>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="https://via.placeholder.com/150" class="card-img-top" alt="Букет 2">
-                    <div class="card-body">
-                        <h5 class="card-title">Букет Лилии</h5>
-                        <p class="card-text">Элегантные белые лилии.</p>
-                        <a href="#" class="btn btn-primary">Купить</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="https://via.placeholder.com/150" class="card-img-top" alt="Букет 3">
-                    <div class="card-body">
-                        <h5 class="card-title">Букет Тюльпанов</h5>
-                        <p class="card-text">Яркие тюльпаны на любой праздник.</p>
-                        <a href="#" class="btn btn-primary">Купить</a>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
 
         <h2 class="text-center mt-5">Специальные предложения</h2>
