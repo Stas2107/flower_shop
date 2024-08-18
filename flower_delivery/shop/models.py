@@ -13,8 +13,8 @@ class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     products = models.ManyToManyField(Product)
     created_at = models.DateTimeField(auto_now_add=True)
-    delivery_address = models.CharField(max_length=255, null=True)  # Сделать поле допускающим NULL
-    delivery_date = models.DateField()
+    delivery_address = models.CharField(max_length=255, null=True)
+    delivery_date = models.DateField(null=True)  # Сделать поле допускающим NULL
     delivery_time = models.TimeField()
     comments = models.TextField(blank=True, null=True)
 
